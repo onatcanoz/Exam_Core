@@ -1,0 +1,152 @@
+﻿@model ParagraphModel
+@{
+    ViewData["Title"] = "GetAll";
+}
+<div>
+    <h1 style="text-align:center">@Model.Title</h1>
+    <br />
+    <p style="text-align:justify">@Model.Content</p>
+</div>
+<br />
+<div class="row">
+    @for (int i = 0; i < Model.QuestionModels.Count; i++)
+    {
+        var questionNo = i + 1;
+        var question = Model.QuestionModels[i];
+        @*<div class="col-6">
+                <p style="text-align:justify">@question.Id ) @question.QuestionDescription</p>
+                <input class="trueOption" hidden value="@question.TrueOption" />
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <input type="button" name="name" value="A" style="width: 100%; text-align: left; background-color: transparent" class="option" placeholder="@question.OptionA" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <input type="button" name="name" value="B" style="width: 100%; text-align: left; background-color: transparent" class="option" placeholder="@question.OptionB" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <input type="button" name="name" value="C" style="width: 100%; text-align: left; background-color: transparent" class="option" placeholder="@question.OptionC" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <input type="button" name="name" value="@question.OptionD" style="width:100%;text-align:left;background-color:transparent" class="option" placeholder="" />
+                    </div>
+                </div>
+            </div>*@
+        <input class="trueOption" hidden value="@question.TrueOption" />
+        <div class="col-6 mb-3 questionContainer">
+            <div class="question">
+                Soru : @Model.QuestionModels[i].QuestionDescription
+            </div>
+            <hr />
+            <div class="row">
+                <div class="form-check w-100">
+                    <input class="form-check-input d-none" type="radio" name="question@(questionNo)" value="@(questionNo)-A" id="question@(questionNo)SelectA">
+                    <label class="d-block border option" for="question@(questionNo)SelectA">
+                        @question.OptionA
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-check w-100">
+                    <input class="form-check-input d-none" type="radio" name="question@(questionNo)" value="@(questionNo)-B" id="question@(questionNo)SelectB">
+                    <label class="d-block border option" for="question@(questionNo)SelectB">
+                        @question.OptionB
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-check w-100">
+                    <input class="form-check-input d-none" type="radio" name="question@(questionNo)" value="@(questionNo)-C" id="question@(questionNo)SelectC">
+                    <label class="d-block border option" for="question@(questionNo)SelectC">
+                        @question.OptionC
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-check w-100">
+                    <input class="form-check-input d-none" type="radio" name="question@(questionNo)" value="@(questionNo)-D" id="question@(questionNo)SelectD">
+                    <label class="d-block border option" for="question@(questionNo)SelectD">
+                        @question.OptionD
+                    </label>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+<br />
+<br />
+<button class="container-fluid finalizeExam" style="display: flex; justify-content: center; align-items: center; width: 50%; height: 50px;">Sınavı Tamamla</button>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $("input[type='radio']").on("click", function () {
+        $(this).parents(".questionContainer").find(".option").css("background-color", "transparent")
+        $(this).next().css("background-color", "lightblue");
+    });
+
+    $(".finalizeExam").on("click", function (e) {
+        var arr = []
+        var selectedOptions = $(".selectedOption");
+        var trueOptions = $(".trueOption");
+        for (var i = 0; i < $("input[type='radio']").length; i++) {
+            var item = $($("input[type='radio']")[i]);
+            var trueOption = $(trueOptions[i]).val();
+            var asd = item.is(":checked");
+            if (asd) {
+                arr.push(item.val())
+            }
+            if (selectedOptions[i] == trueOption) {
+                $(this).next().css("background-color", "green");
+            }
+
+            if (selectedOptions[i] != trueOption) {
+                $(this).next().css("background-color", "red");
+            }
+        }
+        //var checkeds = $("input[type='radio']").filter(m => $(m).is(":checked"));
+        //console.log(checkeds);
+    })
+
+    //$(".option").on("click", function () {
+
+    //    if ($(this).hasClass("selectedOption")) {
+    //        $(this).removeClass("selectedOption")
+    //        $(this).css("background-color", "transparent")
+    //    } else {
+    //        $(this).addClass("selectedOption")
+    //        $(this).css("background-color", "aqua")
+    //    }
+    //})
+
+
+    $(".finalizeExam").on("click", function (e) {
+        var selectedOptions = $(".selectedOption");
+        var trueOptions = $(".trueOption");
+
+
+
+        for (var i = 0; i < selectedOptions.length; i++) {
+            var selectedOption = $(selectedOptions[i]).val();
+            var trueOption = $(trueOptions[i]).val();
+
+
+            $(selectedOptions[i]).css("background-color", "green")
+
+
+            if (selectedOption != trueOption) {
+                $(selectedOptions[i]).css("background-color", "red")
+            }
+        }
+    })
+
+</script>

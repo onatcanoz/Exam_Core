@@ -1,0 +1,249 @@
+﻿@model CreateExamModel
+
+@{
+    ViewBag.Title = "Yeni Soru Oluştur";
+}
+<form method="dialog">
+    <div class="row">
+        <div class="col-12">
+            <div class="container-fluid">
+                <select id="paragraphTitle" name="paragraphTitle" style=" width: 100%; height: 35px">
+                    @foreach (var paragraph in Model.ParagraphModel)
+                    {
+                        <option value="@paragraph.Id">@paragraph.Title</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="col-12">
+        <div class="container-fluid">
+            <textarea type="text" id="paragraphContent" name="paragraphContent" value="@Model.ParagraphModel.FirstOrDefault().Content" style="width: 100%; height: 200px" readonly>
+          @Model.ParagraphModel.FirstOrDefault().Content
+            </textarea>
+        </div>
+    </div>
+
+    <div id="questionDivContainer">
+        <div class="row mb-2 questionContainer">
+            <div class="col-12">
+                <div class="container-fluid">
+                    <input class="form-control question" type="text" id="fname" name="question1" style="width: 100%;" placeholder="Soru 1" value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionA" type="text" id="fname" name="fname" style="width: 100%;" placeholder="A) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionB" type="text" id="fname" name="fname" style="width: 100%;" placeholder="B) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionC" type="text" id="fname" name="fname" style="width: 100%;" placeholder="C) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionD" type="text" id="fname" name="fname" style="width: 100%;" placeholder="D) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
+                    <select id="cars" name="cars" style=" width: 50%; height: 35px;" class="trueAnswer">
+                        <option value="true">Doğru Cevap Seç</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-2 questionContainer">
+            <div class="col-12">
+                <div class="container-fluid">
+                    <input class="form-control question" type="text" id="fname" name="fname" style="width: 100%;" placeholder="Soru 2" value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionA" type="text" id="fname" name="fname" style="width: 100%;" placeholder="A) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionB" type="text" id="fname" name="fname" style="width: 100%;" placeholder="B) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionC" type="text" id="fname" name="fname" style="width: 100%;" placeholder="C) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionD" type="text" id="fname" name="fname" style="width: 100%;" placeholder="D) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
+                    <select id="cars" name="cars" style=" width: 50%; height: 35px;" class="trueAnswer">
+                        <option value="true">Doğru Cevap Seç</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-2 questionContainer">
+            <div class="col-12">
+                <div class="container-fluid">
+                    <input class="form-control question" type="text" id="fname" name="fname" style="width: 100%;" placeholder="Soru 3" value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionA" type="text" id="fname" name="fname" style="width: 100%;" placeholder="A) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionB" type="text" id="fname" name="fname" style="width: 100%;" placeholder="B) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionC" type="text" id="fname" name="fname" style="width: 100%;" placeholder="C) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionD" type="text" id="fname" name="fname" style="width: 100%;" placeholder="D) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
+                    <select id="cars" name="cars" style=" width: 50%; height: 35px;" class="trueAnswer">
+                        <option value="true">Doğru Cevap Seç</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-2 questionContainer">
+            <div class="col-12">
+                <div class="container-fluid">
+                    <input class="form-control question" type="text" id="fname" name="fname" style="width: 100%;" placeholder="Soru 4" value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionA" type="text" id="fname" name="fname" style="width: 100%;" placeholder="A) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionB" type="text" id="fname" name="fname" style="width: 100%;" placeholder="B) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionC" type="text" id="fname" name="fname" style="width: 100%;" placeholder="C) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid">
+                    <input class="optionD" type="text" id="fname" name="fname" style="width: 100%;" placeholder="D) " value=""><br><br>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
+                    <select id="cars" name="cars" style=" width: 50%; height: 35px;" class="trueAnswer">
+                        <option value="true">Doğru Cevap Seç</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="container-fluid createButton" style="display: flex; justify-content: center; align-items: center; width: 50%; height: 50px;" type="button">Sınav Oluştur</button>
+
+</form>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+
+    $("#paragraphTitle").on("change", function () {
+        var id=$(this).find(":selected").val();
+
+
+         $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetParagraphContent", "Question")',
+             data: { id: id },
+             success: function (res) {
+                 $("#paragraphContent").val(res.content)
+            }
+        });
+
+    })
+
+    $(".createButton").on("click", function (e) {
+        e.preventDefault();
+        var selectedParagraph = $("#paragraphTitle").val();  //selectedValue
+        var questions = $(".question")
+        var optionA = $(".optionA")
+        var optionB = $(".optionB")
+        var optionC = $(".optionC")
+        var optionD = $(".optionD")
+        var trueAnswer = $(".trueAnswer")  //selecteedValue.
+        let data = {
+            SelectedParagraphId: selectedParagraph,
+            QuestionModels:[]
+        };
+
+        _length = $("#questionDivContainer .questionContainer").length
+        for (var i = 0; i < _length; i++) {
+
+            let obj = {
+                QuestionDescription: $(questions[i]).val(),
+                OptionA: $(optionA[i]).val(),
+                OptionB: $(optionB[i]).val(),
+                OptionC: $(optionC[i]).val(),
+                OptionD: $(optionD[i]).val(),
+                TrueOption: $(trueAnswer[i]).val()
+            }
+            data.QuestionModels.push(obj);
+        }
+        console.log(data);
+
+         $.ajax({
+            type: "POST",
+            url: '@Url.Action("CreateExam", "Question")',
+             data: { model: data },
+             success: function (res) {
+                 window.location.href = "ParagraphList";
+            }
+        });
+
+
+
+    })
+
+
+
+</script>
