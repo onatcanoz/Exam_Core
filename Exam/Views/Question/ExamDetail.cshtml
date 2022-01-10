@@ -90,28 +90,32 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
     $("input[type='radio']").on("click", function () {
-        $(this).parents(".questionContainer").find(".option").css("background-color", "transparent")
-        $(this).next().css("background-color", "lightblue");
+        $(this).parents(".questionContainer").find(".option").css("background-color", "transparent");
+
+        $(this).parents(".questionContainer").find("label").removeClass("checked");
+        $(this).next().addClass("checked");
     });
 
     $(".finalizeExam").on("click", function (e) {
         var arr = []
-        var selectedOptions = $(".selectedOption");
-        var trueOptions = $(".trueOption");
-        for (var i = 0; i < $("input[type='radio']").length; i++) {
-            var item = $($("input[type='radio']")[i]);
-            var trueOption = $(trueOptions[i]).val();
-            var asd = item.is(":checked");
-            if (asd) {
-                arr.push(item.val())
-            }
-            if (selectedOptions[i] == trueOption) {
-                $(this).next().css("background-color", "green");
-            }
 
-            if (selectedOptions[i] != trueOption) {
-                $(this).next().css("background-color", "red");
-            }
+        $("body").addClass("finished");
+
+        for (var i = 0; i < $(".questionContainer").length; i++) {
+
+            var trueOption = $('.trueOption')[i].value;
+            $("#question" + (i + 1) + "Select" + trueOption).next().addClass("true");
+            debugger;
+
+            //var item = $($("input[type='radio']")[i]);
+            //var trueOption = $(trueOptions[i]).val();
+            //var asd = item.is(":checked");
+            //if (asd) {
+            //    arr.push(item.val())
+            //}
+           
+            //console.log(trueOption);
+            //console.log(arr);
         }
         //var checkeds = $("input[type='radio']").filter(m => $(m).is(":checked"));
         //console.log(checkeds);
@@ -150,3 +154,17 @@
     })
 
 </script>
+<style>
+    .checked {
+        background-color: lightblue !important;
+    }
+    .true {
+        background-color: #3f0 !important;
+    }
+    .finished .checked {
+        background-color: red !important;
+    }
+        .finished .checked.true {
+            background-color: #3f0 !important;
+        }
+</style>
